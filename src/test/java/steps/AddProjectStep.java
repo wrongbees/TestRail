@@ -6,7 +6,6 @@ import pages.DashboardAddProjectPage;
 import pages.DashboardProjectsPage;
 
 public class AddProjectStep extends BaseStep {
-
     public AddProjectStep(WebDriver driver, String projectName) throws InterruptedException {
         super(driver);
 
