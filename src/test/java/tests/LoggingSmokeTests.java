@@ -7,7 +7,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import steps.LoginStep;
-
+/*
+*************************************************************************
+запукается с помощью param.xml
+*************************************************************************
+ */
 public class LoggingSmokeTests extends BaseTest {
 
     @Parameters({"login-value", "psw-value"})
