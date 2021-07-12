@@ -9,10 +9,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class BrowserService {
     private ReadProperties properties =new ReadProperties();
     private DriverManagerType driverManagerType;
     private WebDriver driver;
+    private Waits wait;
 
   public BrowserService() {
       switch (properties.getBrowser().toLowerCase()) {
@@ -24,6 +27,7 @@ public class BrowserService {
               chromeOptions.addArguments("disable-gpu");
               chromeOptions.setHeadless(properties.getHeadless());
               driver = new ChromeDriver(chromeOptions);
+              driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
               break;
           case  "firefox" :
               WebDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
@@ -39,10 +43,16 @@ public class BrowserService {
               break;
           default:
               throw new AssertionError("Данный браузер не поддерживается");
+
       }
+      wait = new Waits(driver, properties.getTimeout());
   }
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public Waits getWait(){
+      return  wait;
     }
 }
