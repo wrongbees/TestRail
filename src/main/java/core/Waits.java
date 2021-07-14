@@ -25,6 +25,11 @@ public class Waits {
     public WebElement waitForToBeClickable(By by){
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
+    public Boolean waitForToBeNotClickable(By by){
+
+        return wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(by)));
+    }
+
 
     public List<WebElement> waitForVisibilityAllElements(By by){
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
@@ -38,8 +43,18 @@ public class Waits {
         return wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
+    public boolean waitForVisibilityText(By by, String text){
+        return wait.until(ExpectedConditions.textToBe(by, text));
+    }
     public boolean waitForAttribute(By by, String attributeName, String attributeValue){
         return wait.until(ExpectedConditions.attributeToBe(by,attributeName, attributeValue));
+    }
+
+    public boolean waitAttributeToBeEmpty(WebElement element, String attributeName){
+        return wait.until(ExpectedConditions.attributeToBeNotEmpty(element, attributeName));
+    }
+    public boolean waitAttributeContains(WebElement element, String attributeName, String attributeValue){
+        return wait.until(ExpectedConditions.attributeContains(element, attributeName, attributeValue));
     }
 
 //    public boolean waitForWindows(int windowCount){

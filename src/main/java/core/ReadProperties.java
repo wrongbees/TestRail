@@ -21,6 +21,7 @@ public class ReadProperties {
 
 
     public String getURL() { return properties.getProperty("url");}
+    public String getDownloadDir() { return properties.getProperty("download.dir");}
     public String getBrowser() { return properties.getProperty("browser");}
     public String getUsername() { return properties.getProperty("username");}
     public String getPassword() { return properties.getProperty("password");}
