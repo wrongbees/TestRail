@@ -74,7 +74,7 @@ public class ApplicationTests extends BaseTest {
     @Test
     public void fileDownloaderTest() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/download");
-        File folder = new File(properties.getDownloadDir());
+        File folder = new File(System.getProperty(properties.getDownloadDir()));
 
         By text_txt = By.xpath("//*[@href='download/test.txt']");
 
@@ -87,7 +87,7 @@ public class ApplicationTests extends BaseTest {
                 isPresent = true;
             }
         }
-        Thread.sleep(4000);
+
         Assert.assertTrue(isPresent);
 
 }
