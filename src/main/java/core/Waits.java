@@ -21,6 +21,9 @@ public class Waits {
     public WebElement waitForVisibility(WebElement element){
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+    public Boolean waitForVisibilityList(List<WebElement> elementsList){
+        return wait.until(ExpectedConditions.invisibilityOfAllElements(elementsList));
+    }
 
     public WebElement waitForToBeClickable(By by){
         return wait.until(ExpectedConditions.elementToBeClickable(by));
