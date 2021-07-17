@@ -1,13 +1,14 @@
 package tests.HerocuApplication;
 
 import baseEntities.BaseTest;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ApplicationTest extends BaseTest {
+
+import java.util.List;
+
+public class Herocu_Lesson12_Test extends BaseTest {
 //    Alerts
 //    Открыть страницу Alerts (http://the-internet.herokuapp.com/javascript_alerts)
 //           1 Кликнуть по кнопке Click for JS Alert
@@ -82,5 +83,64 @@ public class ApplicationTest extends BaseTest {
         wait.waitForVisibility(button_align_center).click();
 
     }
-    
+//   iFrame - дополнительно
+//   1. Открыть Onliner.by
+//   2. В строке поиска ввести какое-то значение для поиска (например "Тостер")
+//   3. Дождаться появление iFrame
+//   4. Переключиться в iFrame
+//   5. Взять название первого элемента из списка
+//   6. Удалить поисковое значение и ввести полученное на шаге 5
+//   7. Закрыть окно поиска
+//   8. Проверить что искомый предмет отображается на экране
+
+    @Test
+    public void iFrameOnlinerTest() throws InterruptedException {
+        //1
+        driver.get("https://www.onliner.by/");
+
+        By field_search = By.xpath("//input[@class='fast-search__input']");
+        By field_search_in_iframe = By.xpath("//input[@class='search__input']");
+        By modal_iframe = By.xpath("//iframe[@class='modal-iframe']");
+        By field_search_close = By.xpath("//span[@class='search__close']");
+        By product_page_title = By.xpath("//div[@class ='catalog-masthead']/h1");
+
+        WebElement searchField = driver.findElement(field_search);
+
+        //2
+        searchField.sendKeys("лыжи");
+        //3
+        WebElement iframe = wait.waitForVisibility(modal_iframe);
+        //4
+        driver.switchTo().frame(iframe);
+        //5
+        wait.waitForVisibility(By.xpath("//div[@class='product__title']/a"));
+        List<WebElement> productList = driver.findElements(By.xpath("//div[@class='product__title']/a"));
+        //6
+        WebElement iFrameFieldSearch = driver.findElement(field_search_in_iframe);
+        iFrameFieldSearch.clear();
+        String productName = productList.get(0).getText();
+        iFrameFieldSearch.sendKeys(productName);
+        productList.get(0).click();
+        //7
+        driver.switchTo().defaultContent();
+        //8
+        Assert.assertEquals(wait.waitForVisibility(product_page_title).getText(),productName);
+    }
+
+//    JavaScriptExecutor
+//   1. Открыть страницу onliner.by
+//   2. Реализовать скролирование в самый низ страницы через JS
+    @Test
+    public void JSExecutorScrollingTest() throws InterruptedException {
+
+        By rules_return = By.xpath("//a[contains(text(),'Правила возврата')]");
+       //1
+        driver.get("https://www.onliner.by/");
+        //2
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor)driver;
+        javascriptExecutor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+
+
+    }
+
 }
