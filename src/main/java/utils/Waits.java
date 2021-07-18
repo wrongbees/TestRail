@@ -1,4 +1,4 @@
-package core;
+package utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,9 +28,13 @@ public class Waits {
     public WebElement waitForToBeClickable(By by){
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
-    public Boolean waitForToBeNotClickable(By by){
 
-        return wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(by)));
+    public Boolean waitForToBeNotClickable(By by){return wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(by)));
+    }
+
+    public Boolean waitForToBeNotClickable(WebElement element){
+
+        return wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(element)));
     }
 
 

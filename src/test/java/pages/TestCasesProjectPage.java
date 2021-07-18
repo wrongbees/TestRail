@@ -41,7 +41,7 @@ public class TestCasesProjectPage extends BasePage {
 
     }
     public WebElement getButtonAddTestCases() {
-        return driver.findElement(button_add_test_cases);
+        return waits.waitForVisibility(button_add_test_cases);
     }
 
     public WebElement getTitleTestCase(String caseName) {

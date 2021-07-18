@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import steps.Add_Delete_Search_ProjectStep;
+import steps.Add_Delete_Search_TestCaseStep;
+import steps.LoginStep;
 
+import java.awt.*;
 import java.io.File;
 
 public class Herocu_Lesson11_Tests extends BaseTest {
@@ -85,5 +89,26 @@ public class Herocu_Lesson11_Tests extends BaseTest {
             }
         }
         Assert.assertTrue(isPresent);
+    }
+
+    @Test
+    public void StarTestRail_Test() throws InterruptedException, AWTException {
+
+        String projectName = "Lesson12_star_test";
+
+        LoginStep loginStep = new LoginStep(driver);
+        loginStep.login();
+
+        Add_Delete_Search_ProjectStep projectStep = new Add_Delete_Search_ProjectStep(driver);
+        projectStep.addProject(projectName);
+        projectStep.searchProjectByName(projectName);
+
+        Add_Delete_Search_TestCaseStep testCaseStep = new Add_Delete_Search_TestCaseStep(driver);
+        testCaseStep.choiceOfProcedureTestCases();
+
+        testCaseStep.choiceOfProcedureAddTestCase();
+
+        testCaseStep.addTestCaseThisParameters("Added test case","Bla bla bla",
+                "Bla bla bla","Bla bla bla","pooh.jpg");
     }
 }

@@ -1,7 +1,7 @@
 package baseEntities;
 
 import core.ReadProperties;
-import core.Waits;
+import utils.Waits;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
@@ -16,8 +16,9 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver, boolean openPageByUrl) throws InterruptedException {
         this.driver = driver;
-        waits = new Waits(driver, properties.getTimeout());
         properties = new ReadProperties();
+        waits = new Waits(driver, properties.getTimeout());
+
 
         if (openPageByUrl) {
             openPage();
