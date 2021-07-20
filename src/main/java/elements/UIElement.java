@@ -22,6 +22,14 @@ public class UIElement implements WebElement {
 
     }
 
+    public UIElement(WebDriver driver, WebElement webElement){
+
+        this.driver = driver;
+        this.jsExecutor = (JavascriptExecutor) driver;
+        this.waits = new Waits(driver, 5);
+        this.webElement = webElement;
+    }
+
     @Override
     public void click() {
         try {
@@ -120,5 +128,9 @@ public class UIElement implements WebElement {
 
     public void scrollIntoView(){
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", webElement);
+    }
+
+    public WebElement getParent(){
+        return(WebElement) ((JavascriptExecutor) driver).executeScript("return argument[0].parentNode;",webElement);
     }
 }

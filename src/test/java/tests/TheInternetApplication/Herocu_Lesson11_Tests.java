@@ -94,7 +94,7 @@ public class Herocu_Lesson11_Tests extends BaseTest {
     @Test
     public void StarTestRail_Test() throws InterruptedException, AWTException {
 
-        String projectName = "Lesson12_star_test";
+        String projectName = "Lesson13_project3";
 
         LoginStep loginStep = new LoginStep(driver);
         loginStep.login();
