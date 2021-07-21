@@ -1,5 +1,6 @@
-package elements;
+package elements.table;
 
+import elements.UIElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

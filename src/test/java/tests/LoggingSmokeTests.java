@@ -16,7 +16,7 @@ public class LoggingSmokeTests extends BaseTest {
 
 //    @Parameters({"login-value", "psw-value"})
 //    @Test
-//    public void apositiveLogInTest(String login, String password) throws InterruptedException {
+//    public void positiveLogInTest(String login, String password) throws InterruptedException {
 //         new LoginStep(driver,login, password);
 //
 //        Assert.assertTrue(new DashboardPage(driver, true)

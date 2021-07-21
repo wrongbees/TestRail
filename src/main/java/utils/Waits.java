@@ -28,6 +28,9 @@ public class Waits {
     public WebElement waitForToBeClickable(By by){
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
+    public WebElement waitForToBeClickable(WebElement element){
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
     public Boolean waitForToBeNotClickable(By by){return wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(by)));
     }

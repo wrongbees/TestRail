@@ -22,4 +22,6 @@ public class Button {
     public boolean isDisplayed(){
        return this.element.isDisplayed();
     }
+
+    public String getAttribute(String attributeName) { return this.element.getAttribute(attributeName);}
 }

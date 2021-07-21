@@ -78,6 +78,7 @@ public class UIElement implements WebElement {
 
     @Override
     public boolean isEnabled() {
+
         return webElement.isEnabled();
     }
 

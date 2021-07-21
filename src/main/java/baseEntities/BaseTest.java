@@ -2,14 +2,16 @@ package baseEntities;
 
 import core.BrowserService;
 import core.ReadProperties;
+import org.testng.annotations.Listeners;
+import utils.Listener;
 import utils.Waits;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-
+@Listeners(Listener.class)
 public class BaseTest {
-    protected  WebDriver driver;
+    public WebDriver driver;
     protected ReadProperties properties;
     protected Waits wait;
 

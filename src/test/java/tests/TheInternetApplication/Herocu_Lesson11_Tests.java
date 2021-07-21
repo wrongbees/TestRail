@@ -1,6 +1,7 @@
 package tests.TheInternetApplication;
 
 import baseEntities.BaseTest;
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -49,7 +50,7 @@ public class Herocu_Lesson11_Tests extends BaseTest {
         wait.waitForVisibility(messege_its_anabled);
         wait.waitForToBeClickable(input_field);
     }
-
+    @Description("первый тест")
     @Test
     public void fileUploaderTest() {
         driver.get("http://the-internet.herokuapp.com/upload");
@@ -72,7 +73,7 @@ public class Herocu_Lesson11_Tests extends BaseTest {
 
     }
 
-    @Test(dependsOnMethods = "fileUploaderTest")
+    @Test(dependsOnMethods = "fileUploaderTest",description = "второй тест")
     public void fileDownloaderTest() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/download");
         File folder = new File(System.getProperty("user.dir"));
