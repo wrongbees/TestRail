@@ -7,25 +7,18 @@ import pages.LoginPage;
 
 public class LoginStep extends BaseStep {
 
-    public LoginStep(WebDriver driver) throws InterruptedException {
+    public LoginStep(WebDriver driver) {
         super(driver);
-        login();
     }
 
-    public LoginStep(WebDriver driver, String userName, String password) throws InterruptedException {
-        super(driver);
-        login(userName,password);
-
-    }
-
-    private void login(String name, String password) throws InterruptedException {
+    public void login(String name, String password) throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver, true);
         loginPage.setLoginName(name);
         loginPage.setPassword(password);
         loginPage.clickLoginButton();
     }
 
-    private void login() throws InterruptedException {
+    public void login() throws InterruptedException {
         ReadProperties properties = new ReadProperties();
         LoginPage loginPage = new LoginPage(driver, true);
         loginPage.setLoginName(properties.getUsername());
