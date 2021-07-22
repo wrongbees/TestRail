@@ -97,8 +97,6 @@ public class Herocu_Lesson11_Tests extends BaseTest {
 
         String projectName = "Lesson13_project3";
 
-        LoginStep loginStep = new LoginStep(driver);
-        loginStep.login();
 
         Add_Delete_Search_ProjectStep projectStep = new Add_Delete_Search_ProjectStep(driver);
         projectStep.addProject(projectName);

@@ -1,7 +1,7 @@
 package elements;
 
-import utils.Waits;
 import org.openqa.selenium.*;
+import utils.Waits;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class UIElement implements WebElement {
 
     }
 
-    public UIElement(WebDriver driver, WebElement webElement){
+    public UIElement(WebDriver driver, WebElement webElement) {
 
         this.driver = driver;
         this.jsExecutor = (JavascriptExecutor) driver;
@@ -35,13 +35,13 @@ public class UIElement implements WebElement {
         try {
             webElement.click();
         } catch (ElementNotVisibleException notVisibleException) {
-           try{
-               jsExecutor.executeScript("arguments[0].scrollIntoView(true);", webElement);
-            scrollIntoView();
-            webElement.click();
-           } catch (Exception e){
-               jsExecutor.executeScript("arguments[0].click();", webElement);
-           }
+            try {
+                jsExecutor.executeScript("arguments[0].scrollIntoView(true);", webElement);
+                scrollIntoView();
+                webElement.click();
+            } catch (Exception e) {
+                jsExecutor.executeScript("arguments[0].click();", webElement);
+            }
         }
     }
 
@@ -73,6 +73,7 @@ public class UIElement implements WebElement {
 
     @Override
     public boolean isSelected() {
+        waits.waitForToBeClickable(webElement);
         return webElement.isSelected();
     }
 
@@ -127,11 +128,11 @@ public class UIElement implements WebElement {
         return webElement.getScreenshotAs(outputType);
     }
 
-    public void scrollIntoView(){
+    public void scrollIntoView() {
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 
-    public WebElement getParent(){
-        return(WebElement) ((JavascriptExecutor) driver).executeScript("return argument[0].parentNode;",webElement);
+    public WebElement getParent() {
+        return (WebElement) ((JavascriptExecutor) driver).executeScript("return arguments[0].parentNode;", webElement);
     }
 }

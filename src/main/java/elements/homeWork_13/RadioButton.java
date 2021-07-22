@@ -1,7 +1,7 @@
-package elements;
+package elements.homeWork_13;
 
+import elements.UIElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -45,23 +45,5 @@ public class RadioButton {
             }
         }
     }
-
-    public Boolean isSelected(int index) {
-        for (UIElement element : options) {
-            if (Integer.parseInt(element.getAttribute("value")) == index) {
-                return element.isSelected();
-            }
-        }
-        return null;
-    }
-
-    public Boolean isSelected(String optionName) {
-        for (UIElement element : options) {
-            String textValue = element.getParent().findElement(By.tagName("strong")).getText();
-            if (textValue.equalsIgnoreCase(optionName)) {
-                return element.isSelected();
-            }
-        }
-        return null;
-    }
 }
+

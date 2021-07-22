@@ -11,7 +11,7 @@ public class RadioButonTests extends BaseTest {
 
     @Test
     public void radioButtonTest1() throws InterruptedException {
-        LoginStep loginStep = new LoginStep(driver);
+               LoginStep loginStep = new LoginStep(driver);
         loginStep.login();
 
         driver.get("https://aqa06onl02.testrail.io/index.php?/admin/projects/add/1");
