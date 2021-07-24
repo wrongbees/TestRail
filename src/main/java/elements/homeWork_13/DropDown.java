@@ -18,7 +18,12 @@ public class DropDown {
     private Button buttonDrDown;
     private String attributeName;
 
-
+    /***
+     *
+     * @param driver
+     * @param by необходимо передать значение любого аттрибута элемента
+     *           активизирующего выбранное поле dropdown.
+     */
     public DropDown(WebDriver driver, By by) {
         this.driver = driver;
         this.wait = new Waits(driver, 2);

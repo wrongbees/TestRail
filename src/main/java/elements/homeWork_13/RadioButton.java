@@ -2,6 +2,7 @@ package elements.homeWork_13;
 
 import elements.UIElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -22,7 +23,7 @@ public class RadioButton {
     public RadioButton(WebDriver driver, By by) {
         this.driver = driver;
 
-        for (WebElement element: driver.findElements(by)) {
+        for (WebElement element : driver.findElements(by)) {
             options.add(new UIElement(driver, element));
         }
     }
@@ -38,11 +39,37 @@ public class RadioButton {
 
     public void selectByText(String optionName) {
         for (UIElement element : options) {
-            String textValue = element.getParent().findElement(By.tagName("strong")).getText();
-            if (textValue.equalsIgnoreCase(optionName)) {
+            if (getTextValue(element).equalsIgnoreCase(optionName)) {
                 element.click();
                 break;
             }
+        }
+    }
+
+    public Boolean isSelected(int index) {
+        for (UIElement element : options) {
+            if (Integer.parseInt(element.getAttribute("value")) == index) {
+                return element.isSelected();
+            }
+        }
+        return null;
+    }
+
+    public Boolean isSelected(String optionName) {
+        for (UIElement element : options) {
+
+            if (getTextValue(element).equalsIgnoreCase(optionName)) {
+                return element.isSelected();
+            }
+        }
+        return null;
+    }
+
+    private String getTextValue(UIElement element){
+        try {
+            return element.getParent().findElement(By.tagName("strong")).getText();
+        } catch (NoSuchElementException ex) {
+            return element.getParent().findElement(By.tagName("p")).getText();
         }
     }
 }
