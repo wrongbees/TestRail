@@ -10,6 +10,7 @@ public class DashboardPage extends BasePage {
 
     private final static String endpoint = "index.php?/dashboard";
 
+
     private final static By navigation_dashboard = By.id("navigation-dashboard");
     private final static By button_add_project = By.id("sidebar-projects-add");
 

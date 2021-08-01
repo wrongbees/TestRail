@@ -2,15 +2,19 @@ package baseEntities;
 
 import core.BrowserService;
 import core.ReadProperties;
+import org.testng.annotations.Listeners;
+import utils.Listener;
+import utils.Waits;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-
+@Listeners(Listener.class)
 public class BaseTest {
-    protected  WebDriver driver;
+    protected  BrowserService browserService;
+    public WebDriver driver;
     protected ReadProperties properties;
+    protected Waits wait;
 
 
     @BeforeTest
@@ -21,7 +25,9 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupMethod(){
-        driver = new BrowserService().getDriver();
+         browserService = new BrowserService();
+        driver = browserService.getDriver();
+        wait = browserService.getWait();
     }
 
 

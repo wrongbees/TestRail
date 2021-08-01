@@ -36,7 +36,7 @@ public class LoginPage extends BasePage {
         }
     }
 
-    public WebElement getLoginPageInstallationName(){ return driver.findElement(loginpage_installationname);}
+    public WebElement getLoginPageInstallationName(){ return waits.waitForVisibility(loginpage_installationname);}
 
     public WebElement getNameField(){ return driver.findElement(name_by);}
 
