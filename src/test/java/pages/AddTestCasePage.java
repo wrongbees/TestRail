@@ -19,6 +19,7 @@ public class AddTestCasePage extends BasePage {
     private final static By steps_display = By.id("custom_steps_display");
     private final static By expected_display = By.id("custom_expected_display");
     private final static By add_file_window = By.id("libraryAttachmentsAddItem");
+    private final static By add_test_casse = By.id("navigation-suites");
     private final static By library_attachments_add_item = By.id("libraryAttachmentsAddItem");
     private final static By button_attachment_new_Submit = By.id("attachmentNewSubmit");
 

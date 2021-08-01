@@ -15,15 +15,15 @@ public class CheckBox {
 
     private void click(){ this.uiElement.click();}
 
-    public Boolean isSelect(){return uiElement.isSelected();}
+    public Boolean isSelected(){return uiElement.isSelected();}
 
     public void mark(){
-        if (!this.isSelect())
+        if (!this.isSelected())
             this.click();
     }
 
     public void unMark(){
-        if (this.isSelect())
+        if (this.isSelected())
             this.click();
     }
 }

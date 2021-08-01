@@ -9,57 +9,65 @@ import pages.ProjectPage;
 import pages.TestCasesProjectPage;
 import steps.*;
 
+import java.awt.*;
+
 public class AddEditDeleteCasesSmokeTests extends BaseTest {
 
-//    @Test(dataProviderClass = StaticProvider.class, dataProvider = "dataForAddTestCase")
-//    public void AddCaseInProject(String projectName,String title, String preconditions, String steps, String expectedResult) throws InterruptedException {
-//
-//        new LoginStep(driver);
-//
-//        new Add_Delete_Search_ProjectStep(driver, projectName);
-//
-//        new SearchProjectByNameStep(driver, projectName);
-//
-//        new Add_Delete_Search_TestCaseStep(driver, title, preconditions, steps, expectedResult);
-//
-//        new SearchProjectByNameStep(driver, projectName);
-//
-//        ProjectPage project_Page = new ProjectPage(driver, false);
-//        Thread.sleep(500);// иногда без сна не прогружается элемент использующийся в следующей строке
-//        // но по этому элементу работает wait() в конструкторе ProjectPage. (не понимаю)
-//        project_Page.clickButtonTestCases();
-//
-//        TestCasesProjectPage testCasesProjectPage = new TestCasesProjectPage(driver, false);
-//        Thread.sleep(500);// без него в 50% не прогружается искомый элемент
-//        Assert.assertTrue(testCasesProjectPage.getTitleTestCase(title).isDisplayed(),
-//                "Тест кейс не добавлен.");
-//
-//    }
-//
-//    @Test( dataProviderClass = StaticProvider.class, dataProvider = "dataForEditTestCase",
-//    dependsOnMethods = "AddCaseInProject")
-//    public void editCaseInProject(String projectName,String title, String new_title,
-//                                  String preconditions, String steps, String expectedResult) throws InterruptedException {
-//
-//         new LoginStep(driver);
-//
-//        new SearchProjectByNameStep(driver, projectName);
-//
-//        new SearchTestCaseInProjectStep(driver,title);
-//
-//        new EditTestCaseStep(driver, new_title,preconditions,steps,expectedResult);
-//
-//        ProjectPage project_Page = new ProjectPage(driver, false);
-//        Thread.sleep(500);// иногда без сна не прогружается элемент использующийся в следующей строке
-//                                // но по этому элементу работает wait() в конструкторе ProjectPage. (не понимаю)
-//        project_Page.clickButtonTestCases();
-//
-//        TestCasesProjectPage testCasesProjectPage = new TestCasesProjectPage(driver, false);
-//        Thread.sleep(500);// без него в 50% не прогружается искомый элемент
-//        Assert.assertTrue(testCasesProjectPage.getTitleTestCase(new_title).isDisplayed(),
-//                "Тест кейс не исправлен.");
-//
-//    }
+    @Test(dataProviderClass = StaticProvider.class, dataProvider = "dataForAddTestCase")
+    public void AddCaseInProject(String projectName,String title, String preconditions, String steps, String expectedResult) throws InterruptedException, AWTException {
+
+       LoginStep loginStep = new LoginStep(driver);
+       loginStep.login();
+
+        Add_Delete_Search_ProjectStep projectStep = new Add_Delete_Search_ProjectStep(driver);
+        projectStep.addProject(projectName);
+        projectStep.searchProjectByName(projectName);
+
+        Add_Delete_Search_TestCaseStep testCaseStep = new Add_Delete_Search_TestCaseStep(driver);
+        testCaseStep.addTestCaseThisParameters(title, preconditions, steps,expectedResult, "pooh.jpg");
+
+        projectStep.searchProjectByName(projectName);
+
+        ProjectPage project_Page = new ProjectPage(driver, false);
+        Thread.sleep(500);// иногда без сна не прогружается элемент использующийся в следующей строке
+        // но по этому элементу работает wait() в конструкторе ProjectPage. (не понимаю)
+        project_Page.clickButtonTestCases();
+
+        TestCasesProjectPage testCasesProjectPage = new TestCasesProjectPage(driver, false);
+        Thread.sleep(500);// без него в 50% не прогружается искомый элемент
+        Assert.assertTrue(testCasesProjectPage.getTitleTestCase(title).isDisplayed(),
+                "Тест кейс не добавлен.");
+
+    }
+
+    @Test( dataProviderClass = StaticProvider.class, dataProvider = "dataForEditTestCase")
+    //dependsOnMethods = "AddCaseInProject")
+    public void editCaseInProject(String projectName,String title, String new_title,
+                                  String preconditions, String steps, String expectedResult) throws InterruptedException {
+
+        LoginStep loginStep = new LoginStep(driver);
+        loginStep.login();
+
+        Add_Delete_Search_ProjectStep projectStep = new Add_Delete_Search_ProjectStep(driver);
+        projectStep.searchProjectByName(projectName);
+
+        Add_Delete_Search_TestCaseStep testCaseStep = new Add_Delete_Search_TestCaseStep(driver);
+        testCaseStep.searchTestCaseByName(title);
+        testCaseStep.editTestCaseStep(new_title,preconditions,steps,expectedResult);
+
+
+
+        ProjectPage project_Page = new ProjectPage(driver, false);
+        Thread.sleep(500);// иногда без сна не прогружается элемент использующийся в следующей строке
+                                // но по этому элементу работает wait() в конструкторе ProjectPage. (не понимаю)
+        project_Page.clickButtonTestCases();
+
+        TestCasesProjectPage testCasesProjectPage = new TestCasesProjectPage(driver, false);
+        Thread.sleep(500);// без него в 50% не прогружается искомый элемент
+        Assert.assertTrue(testCasesProjectPage.getTitleTestCase(new_title).isDisplayed(),
+                "Тест кейс не исправлен.");
+
+    }
 //
 //    @Test(dataProviderClass = StaticProvider.class, dataProvider = "dataForDeleteTestCase"
 //            ,dependsOnMethods = "editCaseInProject")
@@ -82,8 +90,8 @@ public class AddEditDeleteCasesSmokeTests extends BaseTest {
 //            expectedResult = false;
 //        }
 //        Assert.assertFalse(expectedResult,"Тест кейс не удален.");
-//
-//    }
-//
+
+   // }
+
 
 }

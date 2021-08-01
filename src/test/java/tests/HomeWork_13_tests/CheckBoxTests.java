@@ -21,17 +21,17 @@ public class CheckBoxTests extends BaseTest {
         CheckBox checkBox = new CheckBox(driver,check_box);
 
         checkBox.mark();
-        Assert.assertTrue(checkBox.isSelect());
+        Assert.assertTrue(checkBox.isSelected());
 
         checkBox.unMark();
-        Assert.assertFalse(checkBox.isSelect());
+        Assert.assertFalse(checkBox.isSelected());
 
         checkBox.mark();
         checkBox.mark();
-        Assert.assertTrue(checkBox.isSelect());
+        Assert.assertTrue(checkBox.isSelected());
 
         checkBox.unMark();
         checkBox.unMark();
-        Assert.assertFalse(checkBox.isSelect());
+        Assert.assertFalse(checkBox.isSelected());
     }
 }

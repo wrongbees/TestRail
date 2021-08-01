@@ -52,7 +52,7 @@ public class RadioButton {
                 return element.isSelected();
             }
         }
-        return null;
+        return false;
     }
 
     public Boolean isSelected(String optionName) {
@@ -62,7 +62,7 @@ public class RadioButton {
                 return element.isSelected();
             }
         }
-        return null;
+        return false;
     }
 
     private String getTextValue(UIElement element){

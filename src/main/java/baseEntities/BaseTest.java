@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 @Listeners(Listener.class)
 public class BaseTest {
+    protected  BrowserService browserService;
     public WebDriver driver;
     protected ReadProperties properties;
     protected Waits wait;
@@ -24,7 +25,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupMethod(){
-        BrowserService browserService = new BrowserService();
+         browserService = new BrowserService();
         driver = browserService.getDriver();
         wait = browserService.getWait();
     }
