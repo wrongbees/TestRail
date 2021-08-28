@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserService {
-    private ReadProperties properties =new ReadProperties();
+    private ReadProperties properties = ReadProperties.getInstance();
     private DriverManagerType driverManagerType;
     private WebDriver driver;
     private Waits wait;

@@ -5,13 +5,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
     private final static String endpoint ="/index.php?/auth/login";
 
     private final static By loginpage_installationname = By.className("loginpage-installationname");
     private final static By name_by = By.id("name");
+
+//    @FindBy (id = "password")
+//    public WebElement password_by;
     private final static By password_by = By.id("password");
+
     private final static By button_login_by = By.id("button_primary");
 
 

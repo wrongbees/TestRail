@@ -19,7 +19,7 @@ public class BaseTest {
 
     @BeforeTest
     public void setupTest(){
-        properties =new  ReadProperties();
+        properties =ReadProperties.getInstance();
     }
 
 

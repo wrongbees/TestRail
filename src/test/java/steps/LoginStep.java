@@ -19,7 +19,7 @@ public class LoginStep extends BaseStep {
     }
 
     public void login() throws InterruptedException {
-        ReadProperties properties = new ReadProperties();
+        ReadProperties properties = ReadProperties.getInstance();
         LoginPage loginPage = new LoginPage(driver, true);
         loginPage.setLoginName(properties.getUsername());
         loginPage.setPassword(properties.getPassword());

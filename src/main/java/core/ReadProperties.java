@@ -5,10 +5,11 @@ import java.util.Properties;
 
 public class ReadProperties {
 
+    private static ReadProperties currentReadProperty;
     protected Properties properties;
 
 
-    public ReadProperties() {
+    private ReadProperties() {
         properties = new Properties();
 
         try {
@@ -17,6 +18,11 @@ public class ReadProperties {
             e.printStackTrace();
         }
 
+    }
+
+    public static ReadProperties getInstance(){
+        if (currentReadProperty == null){return new ReadProperties();}
+        return currentReadProperty;
     }
 
 
