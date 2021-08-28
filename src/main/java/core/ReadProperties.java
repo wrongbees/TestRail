@@ -5,10 +5,11 @@ import java.util.Properties;
 
 public class ReadProperties {
 
+    private static ReadProperties currentReadProperty;
     protected Properties properties;
 
 
-    public ReadProperties() {
+    private ReadProperties() {
         properties = new Properties();
 
         try {
@@ -19,8 +20,14 @@ public class ReadProperties {
 
     }
 
+    public static ReadProperties getInstance(){
+        if (currentReadProperty == null){return new ReadProperties();}
+        return currentReadProperty;
+    }
+
 
     public String getURL() { return properties.getProperty("url");}
+    public String getDownloadDir() { return properties.getProperty("download.dir");}
     public String getBrowser() { return properties.getProperty("browser");}
     public String getUsername() { return properties.getProperty("username");}
     public String getPassword() { return properties.getProperty("password");}
